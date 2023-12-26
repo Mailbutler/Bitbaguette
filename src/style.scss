@@ -1,0 +1,25 @@
+.rich-media-item {
+  &.mediaSingleView-content-wrap {
+    max-width: 240px;
+    max-height: 180px;
+
+    .media-file-card-view {
+      max-width: 240px;
+      max-height: 180px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+
+      &,
+      img {
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover {
+        img {
+          transform: translate(-50%, -50%) scale(1.05) !important;
+          filter: brightness(80%);
+        }
+      }
+    }
+  }
+}
