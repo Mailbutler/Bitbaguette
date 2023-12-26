@@ -23,3 +23,9 @@
     }
   }
 }
+
+[id^='comment-'] {
+  &:hover {
+    background-color: transparentize(#ccc, 0.85);
+  }
+}
