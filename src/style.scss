@@ -25,6 +25,8 @@
 }
 
 [id^='comment-'] {
+  transition: all 0.2s ease-in-out;
+
   &:hover {
     background-color: transparentize(#ccc, 0.85);
   }
