@@ -1,0 +1,19 @@
+{
+  "name": "Bitbaguette",
+  "description": "A browser extension extending Bitbucket's interface with useful features",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc --noEmit",
+    "dev": "vite build --watch --mode development",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@types/webextension-polyfill": "^0.10.0",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.0",
+    "vite-plugin-web-extension": "^4.0.0",
+    "webextension-polyfill": "^0.10.0"
+  }
+}
