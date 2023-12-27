@@ -9,6 +9,9 @@ dayjs.extend(customParseFormat);
 
 export function enrichComments() {
   const commentElements = document.querySelectorAll<HTMLDivElement>("[id^='comment-']");
+  if (commentElements.length === 0) return;
+
+  console.debug('Enriching comments…');
   commentElements.forEach((commentElement) => {
     const headerElement = commentElement.querySelector(CSS_CLASSES.COMMENT_HEADER);
     if (!headerElement) throw new Error('Header element not found!');
