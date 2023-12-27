@@ -32,7 +32,7 @@
     background-color: transparentize(#ccc, 0.85);
   }
 
-  // header element
+  // comment header element
   .css-1i27l4i {
     cursor: pointer;
 
@@ -95,5 +95,25 @@
   .baguette-last-reply {
     // margin-left: 24px;
     opacity: 0.7;
+  }
+}
+
+// image diff
+.css-1i987mw {
+  position: relative;
+
+  .baguette-image-comparison-button {
+    position: absolute !important;
+    left: 50%;
+    top: calc(50% - 16px);
+    transform: translateX(-50%);
+    background-color: white;
+    box-shadow:
+      0 3px 6px rgba(0, 0, 0, 0.16),
+      0 3px 6px rgba(0, 0, 0, 0.23);
+
+    &:hover {
+      background-color: #f4f4f4;
+    }
   }
 }

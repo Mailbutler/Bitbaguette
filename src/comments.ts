@@ -24,7 +24,7 @@ export function enrichComments() {
         replyCountElement.classList.add('baguette-reply-count');
         headerElement.appendChild(replyCountElement);
       }
-      replyCountElement.innerHTML = `<span aria-hidden="true" class="css-1afrefi" style="--icon-primary-color: var(--ds-icon, #42526E); --icon-secondary-color: var(--ds-surface, #FFFFFF);"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><g fill="currentColor" fill-rule="evenodd"><path d="M4.998 11.513c0-3.038 3.141-5.51 7.002-5.51 3.861 0 7.002 2.472 7.002 5.51 0 3.039-3.141 5.51-7.002 5.51-3.861 0-7.002-2.471-7.002-5.51zm14.84 7.771v-.002s-1.564-2.26-.767-3.116l-.037.02C20.261 14.902 21 13.279 21 11.513 21 7.371 16.963 4 12 4s-9 3.37-9 7.513 4.037 7.514 9 7.514c1.42 0 2.76-.285 3.957-.776 1.003 1.022 2.287 1.572 3.24 1.719l.002-.003a.524.524 0 00.164.033.515.515 0 00.474-.716z"></path><rect x="7" y="9" width="10" height="2" rx="1"></rect><rect x="7" y="12" width="5" height="2" rx="1"></rect></g></svg></span></span><span aria-hidden="true">${replyCount}</span>`;
+      replyCountElement.innerHTML = `<span aria-hidden="true" class="${CSS_CLASSES.INDICATOR_SPAN}" style="--icon-primary-color: var(--ds-icon, #42526E); --icon-secondary-color: var(--ds-surface, #FFFFFF);"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><g fill="currentColor" fill-rule="evenodd"><path d="M4.998 11.513c0-3.038 3.141-5.51 7.002-5.51 3.861 0 7.002 2.472 7.002 5.51 0 3.039-3.141 5.51-7.002 5.51-3.861 0-7.002-2.471-7.002-5.51zm14.84 7.771v-.002s-1.564-2.26-.767-3.116l-.037.02C20.261 14.902 21 13.279 21 11.513 21 7.371 16.963 4 12 4s-9 3.37-9 7.513 4.037 7.514 9 7.514c1.42 0 2.76-.285 3.957-.776 1.003 1.022 2.287 1.572 3.24 1.719l.002-.003a.524.524 0 00.164.033.515.515 0 00.474-.716z"></path><rect x="7" y="9" width="10" height="2" rx="1"></rect><rect x="7" y="12" width="5" height="2" rx="1"></rect></g></svg></span></span><span aria-hidden="true">${replyCount}</span>`;
 
       const openTaskCount = numOpenTasks(commentElement);
       if (openTaskCount > 0) {
@@ -34,7 +34,7 @@ export function enrichComments() {
           taskCountElement.classList.add('baguette-task-count');
           headerElement.appendChild(taskCountElement);
         }
-        taskCountElement.innerHTML = `<span aria-hidden="true" class="css-1afrefi" style="--icon-primary-color: var(--ds-icon, #42526E); --icon-secondary-color: var(--ds-surface, #FFFFFF);"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><g fill="currentColor" fill-rule="evenodd"><path d="M3 3.993C3 3.445 3.445 3 3.993 3h16.014c.548 0 .993.445.993.993v16.014a.994.994 0 01-.993.993H3.993A.994.994 0 013 20.007V3.993zM5 5v14h14V5H5z"></path><path d="M9.707 11.293a1 1 0 10-1.414 1.414l2 2a1 1 0 001.414 0l4-4a1 1 0 10-1.414-1.414L11 12.586l-1.293-1.293z" fill-rule="nonzero"></path></g></svg></span></span><span aria-hidden="true">${openTaskCount}</span>`;
+        taskCountElement.innerHTML = `<span aria-hidden="true" class="${CSS_CLASSES.INDICATOR_SPAN}" style="--icon-primary-color: var(--ds-icon, #42526E); --icon-secondary-color: var(--ds-surface, #FFFFFF);"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><g fill="currentColor" fill-rule="evenodd"><path d="M3 3.993C3 3.445 3.445 3 3.993 3h16.014c.548 0 .993.445.993.993v16.014a.994.994 0 01-.993.993H3.993A.994.994 0 013 20.007V3.993zM5 5v14h14V5H5z"></path><path d="M9.707 11.293a1 1 0 10-1.414 1.414l2 2a1 1 0 001.414 0l4-4a1 1 0 10-1.414-1.414L11 12.586l-1.293-1.293z" fill-rule="nonzero"></path></g></svg></span></span><span aria-hidden="true">${openTaskCount}</span>`;
       }
     }
 
@@ -79,14 +79,14 @@ export function enrichComments() {
 }
 
 export function numReplies(commentElement: HTMLDivElement): number {
-  const nestedCommentElements = Array.from(commentElement.querySelectorAll('.css-1ghcdo'));
+  const nestedCommentElements = Array.from(commentElement.querySelectorAll(CSS_CLASSES.NESTED_COMMENT));
   return nestedCommentElements.length;
 }
 
 export function lastReplyDate(commentElement: HTMLDivElement): dayjs.Dayjs | null {
   const dateElements = Array.from(
     commentElement.querySelectorAll(
-      ':scope > .css-1ghcdo .css-mkbxrn span[title], :scope > .css-1ghcdo .css-mkbxrn time[title]'
+      `:scope > ${CSS_CLASSES.NESTED_COMMENT} ${CSS_CLASSES.COMMENT_DATE_LINK} span[title], :scope > ${CSS_CLASSES.NESTED_COMMENT} ${CSS_CLASSES.COMMENT_DATE_LINK} time[title]`
     )
   );
   if (dateElements.length === 0) return null;
