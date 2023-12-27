@@ -11,11 +11,13 @@
   "content_scripts": [
     {
       "matches": ["https://*.bitbucket.org/*"],
-      "js": ["src/content.ts"]
+      "js": ["src/content.ts"],
+      "run_at": "document_end"
     }
   ],
   "background": {
     "{{chrome}}.service_worker": "src/background.ts",
     "{{firefox}}.scripts": ["src/background.ts"]
-  }
+  },
+  "permissions": ["storage"]
 }
