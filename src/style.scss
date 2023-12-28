@@ -41,10 +41,23 @@ html {
 
 [id^='comment-'] {
   max-height: 99999px;
-  transition: all 0.2s ease-in-out;
+  border-left: 2px solid transparent;
+  padding-left: 2px;
 
   &:hover {
     background-color: transparentize(#ccc, 0.85);
+
+    [id^='comment-'] {
+      background-color: transparentize(#ccc, 0.85);
+    }
+  }
+
+  &:not(.baguette-collapsed):hover {
+    border-left: 2px solid rgb(255, 193, 7);
+
+    [id^='comment-'] {
+      border-left: 2px solid rgb(255, 193, 7);
+    }
   }
 
   // comment header element
