@@ -23,3 +23,5 @@ PROJECT_FILE="Bitbaguette/Bitbaguette.xcodeproj/project.pbxproj"
 # Update the MARKETING_VERSION and CURRENT_PROJECT_VERSION values in the Xcode project file
 sed -i "" "s/MARKETING_VERSION = .*/MARKETING_VERSION = $VERSION_NUMBER;/g" "$PROJECT_FILE"
 sed -i "" "s/CURRENT_PROJECT_VERSION = .*/CURRENT_PROJECT_VERSION = $BUILD_NUMBER;/g" "$PROJECT_FILE"
+
+git add "$PROJECT_FILE"
