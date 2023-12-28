@@ -39,6 +39,10 @@ html {
   }
 }
 
+.css-172x9p6 .ak-renderer-document .pm-table-wrapper {
+  overflow: hidden; // no idea why we need to fix this table scrolling behavior
+}
+
 [id^='comment-'] {
   max-height: 99999px;
   border-left: 2px solid transparent;
