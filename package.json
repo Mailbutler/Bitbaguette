@@ -8,7 +8,12 @@
     "compile": "tsc --noEmit",
     "dev": "vite build --watch --mode development",
     "build": "rm -rf dist/* && vite build",
-    "build:zip": "npm run build && zip -r extension.zip dist"
+    "build:zip": "npm run build && zip -r extension.zip dist",
+    "version": "npm run version:minor",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "postversion": "./utils/sync-version.sh"
   },
   "devDependencies": {
     "@mdi/js": "^7.4.47",
