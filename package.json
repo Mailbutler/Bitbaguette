@@ -7,7 +7,8 @@
   "scripts": {
     "compile": "tsc --noEmit",
     "dev": "vite build --watch --mode development",
-    "build": "vite build"
+    "build": "rm -rf dist/* && vite build",
+    "build:zip": "npm run build && zip -r extension.zip dist"
   },
   "devDependencies": {
     "@mdi/js": "^7.4.47",
