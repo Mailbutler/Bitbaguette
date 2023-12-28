@@ -2,7 +2,7 @@
   "name": "Bitbaguette",
   "description": "A browser extension extending Bitbucket's interface with useful features",
   "private": true,
-  "version": "1.17.0",
+  "version": "1.18.0",
   "type": "module",
   "scripts": {
     "compile": "tsc --noEmit",
@@ -13,7 +13,7 @@
     "bump:patch": "npm version patch --force",
     "bump:minor": "npm version minor --force",
     "bump:major": "npm version major --force",
-    "postversion": "./utils/sync-version.sh"
+    "postbump": "./utils/sync-version.sh && git commit --amend --no-edit"
   },
   "devDependencies": {
     "@mdi/js": "^7.4.47",
