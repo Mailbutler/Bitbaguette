@@ -67,12 +67,7 @@ function comparisonResult(
 export async function extendImageDiff(imageDiff: ImageDiff): Promise<ImageDiff> {
   const diffResult = await comparisonResult(imageDiff.oldDataUrl, imageDiff.newDataUrl, {
     output: {
-      errorColor: {
-        red: 98,
-        green: 0,
-        blue: 238
-      },
-      transparency: 0.2,
+      transparency: 0.3,
       useCrossOrigin: false
     }
   });

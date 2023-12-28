@@ -3,35 +3,20 @@ import { createApp } from 'vue';
 import ImageComparisonModal from '@/components/ImageComparisonModal.vue';
 
 // Vuetify
-import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
-import * as components from 'vuetify/components';
-import * as directives from 'vuetify/directives';
 import { useMainStore } from './store';
 import { ImageDiff, basicImageDiff } from './models/image-diff';
 import { CSS_CLASSES } from './constants';
 
 export function addImageComparisonModal() {
-  const vuetify = createVuetify({
-    components,
-    directives,
-    icons: {
-      defaultSet: 'mdi',
-      aliases,
-      sets: {
-        mdi
-      }
-    },
-    theme: {
-      defaultTheme: 'light'
-    }
-  });
-
   const modalAnchorComponent = document.createElement('div');
   modalAnchorComponent.id = 'baguette-image-comparison-modal';
   document.body.appendChild(modalAnchorComponent);
-  createApp(ImageComparisonModal).use(createPinia()).use(vuetify).mount('#baguette-image-comparison-modal');
+  createApp(ImageComparisonModal)
+    .use(createPinia())
+    .use(createVuetify({ icons: { defaultSet: 'mdi', aliases, sets: { mdi } }, theme: { defaultTheme: 'light' } }))
+    .mount('#baguette-image-comparison-modal');
 }
 
 export async function addImageComparisonButtons() {

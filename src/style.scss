@@ -1,3 +1,18 @@
+@use 'vuetify' with (
+  $reset: false,
+  $utilities: false
+);
+
+// override globals coming with Vuetify
+html {
+  font-family: '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Fira Sans,Droid Sans,Helvetica Neue,sans-serif';
+  line-height: var(--ds-font-lineHeight-200, 1.42857);
+  font-size: var(--ds-font-size-100, 14px);
+  overflow-x: hidden;
+  text-rendering: initial;
+  -webkit-font-smoothing: initial;
+}
+
 .rich-media-item {
   &.mediaSingleView-content-wrap {
     max-width: 240px;
@@ -112,7 +127,9 @@
       0 3px 6px rgba(0, 0, 0, 0.16),
       0 3px 6px rgba(0, 0, 0, 0.23);
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       background-color: #f4f4f4;
     }
   }
