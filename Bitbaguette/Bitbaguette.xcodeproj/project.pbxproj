@@ -67,6 +67,7 @@
 		1F2EF94C2B3D76AF00C041E6 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = style.css; path = ../../dist/style.css; sourceTree = "<group>"; };
 		1F2EF94D2B3D76AF00C041E6 /* manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = manifest.json; path = ../../dist/manifest.json; sourceTree = "<group>"; };
 		1F2EF94E2B3D76AF00C041E6 /* icon */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icon; path = ../../dist/icon; sourceTree = "<group>"; };
+		1F4C13ED2B3ECB1000320315 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 		1F2EF9022B3D751500C041E6 = {
 			isa = PBXGroup;
 			children = (
+				1F4C13EC2B3ECAE600320315 /* ci_scripts */,
 				1F2EF90D2B3D751500C041E6 /* Bitbaguette */,
 				1F2EF92B2B3D751600C041E6 /* Bitbaguette Extension */,
 				1F2EF90C2B3D751500C041E6 /* Products */,
@@ -150,6 +152,14 @@
 				1F2EF94C2B3D76AF00C041E6 /* style.css */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		1F4C13EC2B3ECAE600320315 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				1F4C13ED2B3ECB1000320315 /* ci_pre_xcodebuild.sh */,
+			);
+			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
