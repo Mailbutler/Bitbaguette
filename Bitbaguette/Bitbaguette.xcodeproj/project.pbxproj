@@ -68,6 +68,7 @@
 		1F2EF94D2B3D76AF00C041E6 /* manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = manifest.json; path = ../../dist/manifest.json; sourceTree = "<group>"; };
 		1F2EF94E2B3D76AF00C041E6 /* icon */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icon; path = ../../dist/icon; sourceTree = "<group>"; };
 		1F4C13ED2B3ECB1000320315 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
+		1FBBB2FA2B3EED9600C12DA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +111,7 @@
 		1F2EF90D2B3D751500C041E6 /* Bitbaguette */ = {
 			isa = PBXGroup;
 			children = (
+				1FBBB2FA2B3EED9600C12DA8 /* Info.plist */,
 				1F2EF90E2B3D751500C041E6 /* AppDelegate.swift */,
 				1F2EF91A2B3D751500C041E6 /* ViewController.swift */,
 				1F2EF91C2B3D751500C041E6 /* Main.storyboard */,
@@ -506,6 +508,7 @@
 				DEVELOPMENT_TEAM = 75PWYP7Y7K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Bitbaguette/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bitbaguette;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -543,6 +546,7 @@
 				DEVELOPMENT_TEAM = 75PWYP7Y7K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Bitbaguette/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Bitbaguette;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
