@@ -5,7 +5,7 @@
 set -e
 
 # install some dependencies
-brew install node@18
+brew install node
 
 # install JavaScript dependencies in project root
 cd ..
