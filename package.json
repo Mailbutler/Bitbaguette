@@ -10,10 +10,9 @@
     "build": "rm -rf dist/* && vite build",
     "build:zip": "npm run build && zip -r extension.zip dist",
     "bump": "npm run bump:minor",
-    "bump:patch": "npm version patch --force",
-    "bump:minor": "npm version minor --force",
-    "bump:major": "npm version major --force",
-    "postbump": "./utils/sync-version.sh && git commit --amend --no-edit"
+    "bump:patch": "npm version patch",
+    "bump:minor": "npm version minor",
+    "bump:major": "npm version major"
   },
   "devDependencies": {
     "@mdi/js": "^7.4.47",
