@@ -1,5 +1,5 @@
 import './style.scss';
-import { enrichComments } from './comments';
+import { addGlobalCommentControls, enrichComments } from './comments';
 import '@webcomponents/webcomponentsjs';
 import { addImageComparisonButtons, addImageComparisonModal } from './image-comparison';
 import { CSS_CLASSES } from './constants';
@@ -10,6 +10,8 @@ addImageComparisonModal();
 
 function inject() {
   if (!document.location.pathname.includes('/pull-requests/')) return;
+
+  addGlobalCommentControls();
 
   // enrich comments
   enrichComments();

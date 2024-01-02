@@ -78,6 +78,55 @@ export function enrichComments() {
   });
 }
 
+export function addGlobalCommentControls() {
+  const commentsHeaderElement = document.querySelector('[data-qa="conversations-global-style"] .sc-bZQynM');
+  if (!commentsHeaderElement) return;
+
+  if (!commentsHeaderElement.querySelector('.baguette-collapse-all')) {
+    const collapseAllElement = document.createElement('span');
+    collapseAllElement.classList.add(CSS_CLASSES.TOGGLE_BUTTON, 'baguette-collapse-all');
+    collapseAllElement.innerHTML = `<span class="${CSS_CLASSES.TOGGLE_ICON}"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><path d="M11.22 6.322L8.293 9.277a1.009 1.009 0 000 1.419.986.986 0 001.405 0l2.298-2.317 2.307 2.327a.989.989 0 001.407 0 1.01 1.01 0 000-1.419l-2.94-2.965A1.106 1.106 0 0011.99 6c-.28 0-.557.107-.77.322zm0 6l-2.928 2.955a1.009 1.009 0 000 1.419.986.986 0 001.405 0l2.298-2.317 2.307 2.327a.989.989 0 001.407 0 1.01 1.01 0 000-1.419l-2.94-2.965A1.106 1.106 0 0011.99 12c-.28 0-.557.107-.77.322z" fill="currentColor" fill-rule="evenodd"></path></svg></span>`;
+    commentsHeaderElement.appendChild(collapseAllElement);
+
+    collapseAllElement.addEventListener('click', (event) => {
+      const commentElements = document.querySelectorAll<HTMLDivElement>("[id^='comment-']");
+
+      commentElements.forEach((commentElement) => {
+        const commentId = commentElement.getAttribute('id');
+        if (!commentId) throw new Error('Comment Id not found!');
+
+        const isCollapsed = commentElement.classList.toggle('baguette-collapsed', true);
+
+        browser.storage.sync.set({ [commentId]: { isCollapsed } });
+      });
+
+      event.stopPropagation();
+    });
+  }
+
+  if (!commentsHeaderElement.querySelector('.baguette-expand-all')) {
+    const expandAllElement = document.createElement('span');
+    expandAllElement.classList.add(CSS_CLASSES.TOGGLE_BUTTON, 'baguette-expand-all');
+    expandAllElement.innerHTML = `<span class="${CSS_CLASSES.TOGGLE_ICON}"><svg width="24" height="24" viewBox="0 0 24 24" role="presentation"><path d="M14.302 13.294l-2.308 2.327-2.297-2.317a.986.986 0 00-1.405 0 1.009 1.009 0 000 1.419l2.928 2.955c.214.215.492.322.77.322.28 0 .56-.107.778-.322l2.94-2.965a1.012 1.012 0 000-1.419.988.988 0 00-1.406 0zm0-6l-2.308 2.327-2.297-2.317a.986.986 0 00-1.405 0 1.009 1.009 0 000 1.419l2.928 2.955c.214.215.492.322.77.322.28 0 .56-.107.778-.322l2.94-2.965a1.012 1.012 0 000-1.419.988.988 0 00-1.406 0z" fill="currentColor" fill-rule="evenodd"></path></svg></span>`;
+    commentsHeaderElement.appendChild(expandAllElement);
+
+    expandAllElement.addEventListener('click', (event) => {
+      const commentElements = document.querySelectorAll<HTMLDivElement>("[id^='comment-']");
+
+      commentElements.forEach((commentElement) => {
+        const commentId = commentElement.getAttribute('id');
+        if (!commentId) throw new Error('Comment Id not found!');
+
+        const isCollapsed = commentElement.classList.toggle('baguette-collapsed', false);
+
+        browser.storage.sync.set({ [commentId]: { isCollapsed } });
+      });
+
+      event.stopPropagation();
+    });
+  }
+}
+
 export function numReplies(commentElement: HTMLDivElement): number {
   const nestedCommentElements = Array.from(commentElement.querySelectorAll(CSS_CLASSES.NESTED_COMMENT));
   return nestedCommentElements.length;
