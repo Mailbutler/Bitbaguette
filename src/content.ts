@@ -1,8 +1,9 @@
-import './style.scss';
+import './styles/style.scss';
 import { addGlobalCommentControls, enrichComments, highlightComment } from './comments';
 import '@webcomponents/webcomponentsjs';
 import { addImageComparisonButtons, addImageComparisonModal } from './image-comparison';
 import { CSS_CLASSES } from './constants';
+import './darkmode';
 
 // const apiToken = JSON.parse(document.querySelector('meta[name="apitoken"]')?.getAttribute('content') || '{}').token;
 

@@ -33,6 +33,10 @@ export async function addImageComparisonButtons() {
 
     // add button, if not present already
     if (!imageDiffElement.querySelector(':scope .baguette-image-comparison-button')) {
+      const buttonWrapperElement = document.createElement('div');
+      buttonWrapperElement.classList.add('baguette-image-comparison-button-wrapper');
+      imageDiffElement.appendChild(buttonWrapperElement);
+
       const buttonElement = document.createElement('button');
       buttonElement.classList.add('baguette-image-comparison-button', CSS_CLASSES.BUTTON);
       buttonElement.innerHTML = `<span>Compare</span>`;
@@ -40,7 +44,7 @@ export async function addImageComparisonButtons() {
         mainStore.setActiveImageDiff(imageDiffElementPair[0].getAttribute('src')!);
         mainStore.setShowDialog(true);
       });
-      imageDiffElement.appendChild(buttonElement);
+      buttonWrapperElement.appendChild(buttonElement);
     }
   });
   if (imageDiffElements.length === 0) return;
