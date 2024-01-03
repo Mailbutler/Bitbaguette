@@ -4,6 +4,7 @@ import '@webcomponents/webcomponentsjs';
 import { addImageComparisonButtons, addImageComparisonModal } from './image-comparison';
 import { CSS_CLASSES } from './constants';
 import './darkmode';
+import { addThemeSelector } from './darkmode';
 
 // const apiToken = JSON.parse(document.querySelector('meta[name="apitoken"]')?.getAttribute('content') || '{}').token;
 
@@ -48,6 +49,15 @@ new MutationObserver(() => {
     numActivities = updatedNumActivities;
 
     inject();
+  }
+
+  const accountGroupElement = document.querySelector<HTMLDivElement>(
+    `${CSS_CLASSES.DROPDOWN_MENU} [aria-label="Account"]`
+  );
+  if (accountGroupElement) {
+    const dropdownElement = accountGroupElement.closest(CSS_CLASSES.DROPDOWN_MENU);
+    console.debug(dropdownElement);
+    addThemeSelector(dropdownElement!);
   }
 }).observe(document, { subtree: true, childList: true });
 
