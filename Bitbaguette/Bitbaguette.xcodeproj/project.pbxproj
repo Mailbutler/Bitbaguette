@@ -438,7 +438,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Bitbaguette Extension/Bitbaguette_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = 75PWYP7Y7K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -451,7 +451,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.22.0;
+				MARKETING_VERSION = 1.23.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -469,7 +469,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Bitbaguette Extension/Bitbaguette_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = 75PWYP7Y7K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -482,7 +482,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.22.0;
+				MARKETING_VERSION = 1.23.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -504,7 +504,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bitbaguette/Bitbaguette.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = 75PWYP7Y7K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -519,7 +519,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.22.0;
+				MARKETING_VERSION = 1.23.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -542,7 +542,7 @@
 				CODE_SIGN_ENTITLEMENTS = Bitbaguette/Bitbaguette.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = 75PWYP7Y7K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -557,7 +557,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.22.0;
+				MARKETING_VERSION = 1.23.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
