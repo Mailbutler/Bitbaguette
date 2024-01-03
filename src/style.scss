@@ -93,6 +93,25 @@ html {
     }
   }
 
+  &.baguette-highlighted {
+    border-radius: 4px;
+
+    box-shadow: 0 0 0 rgba(204, 169, 44, 0.3);
+    animation: pulse 2s 2;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.3);
+    }
+    70% {
+      box-shadow: 0 0 0 16px rgba(204, 169, 44, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+  }
+
   // comment header element
   .css-1i27l4i {
     cursor: pointer;

@@ -61,6 +61,22 @@ export function enrichComments() {
     }
   });
 
+  updateUnseenState();
+  enrichCommentLinks();
+}
+
+export function updateUnseenState(retried = false) {
+  const commentElements = document.querySelectorAll<HTMLDivElement>("[id^='comment-']");
+  if (commentElements.length === 0) return;
+
+  if (!browser.storage) {
+    if (retried) throw new Error('Browser storage not accessible!');
+
+    // Try again
+    setTimeout(() => updateUnseenState(true), 500);
+    return;
+  }
+
   const pullRequestId = window.location.pathname;
   browser.storage.sync.get([pullRequestId]).then((result) => {
     const lastViewDate = result[pullRequestId]?.lastViewDate ? dayjs(result[pullRequestId]?.lastViewDate) : dayjs();
@@ -71,7 +87,7 @@ export function enrichComments() {
 
       const latestReplyDate = lastReplyDate(commentElement);
       const hasUnseenReplies = !!latestReplyDate && latestReplyDate.isAfter(lastViewDate);
-      replyElement.classList.toggle('baguette-reply-count--unseen', hasUnseenReplies);
+      replyElement.classList.toggle('baguette-reply-count--unseen', hasUnseenReplies); // TODO: highlight unseen comments on click
     });
 
     browser.storage.sync.set({ [pullRequestId]: { lastViewDate: dayjs().add(30, 'seconds').toISOString() } });
@@ -125,6 +141,49 @@ export function addGlobalCommentControls() {
       event.stopPropagation();
     });
   }
+}
+
+function enrichCommentLinks() {
+  const commentLinkElements = document.querySelectorAll<HTMLAnchorElement>("a[href^='#comment-']");
+  if (commentLinkElements.length === 0) return;
+
+  commentLinkElements.forEach((commentLinkElement) => {
+    commentLinkElement.addEventListener('click', onClickCommentLink);
+  });
+}
+
+export function highlightComment(commentId: string, expand = true) {
+  commentId = commentId.replace('#', '');
+  const commentElement = document.getElementById(commentId);
+  if (!commentElement) return;
+
+  commentElement.classList.add('baguette-highlighted');
+  setTimeout(() => commentElement.classList.remove('baguette-highlighted'), 3000);
+
+  if (expand) expandComment(commentId);
+}
+
+function expandComment(commentId: string) {
+  const commentElement = document.getElementById(commentId);
+  if (!commentElement) return;
+
+  commentElement.classList.remove('baguette-collapsed');
+
+  // expand all parents, too
+  const parentCommentId = commentElement.closest("[id^='comment-']")?.getAttribute('id');
+  if (parentCommentId && parentCommentId !== commentId) expandComment(parentCommentId);
+
+  // expand all children, too
+  commentElement.querySelectorAll("[id^='comment-']").forEach((commentElement) => {
+    const childCommentId = commentElement.getAttribute('id');
+    if (childCommentId) expandComment(childCommentId);
+  });
+}
+
+function onClickCommentLink(event: MouseEvent) {
+  const clickedElement = event.currentTarget as HTMLAnchorElement | null;
+  const commentId = clickedElement?.getAttribute('href');
+  if (commentId) highlightComment(commentId);
 }
 
 export function numReplies(commentElement: HTMLDivElement): number {
