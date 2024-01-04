@@ -169,6 +169,43 @@ html[data-color-mode='dark'][data-theme~='dark:dark'] {
     color: var(--ds-text-subtlest, #6b778c);
   }
 
+  .css-1f9xybi {
+    // pull request settings panel
+    background-color: var(--ds-surface-raised, #fff);
+    border: 1px solid var(--ds-border, rgba(9, 30, 66, 0.13));
+    box-shadow: none;
+    color: var(--ds-text, #172b4d);
+
+    .css-1vu3ule,
+    .css-zch75,
+    .css-1ell65m {
+      border-color: var(--ds-border, rgba(9, 30, 66, 0.13));
+    }
+  }
+
+  .iLKsB {
+    // simple dropdown menus
+    background-color: var(--ds-surface-raised, #fff);
+    border: 1px solid var(--ds-border, rgba(9, 30, 66, 0.13));
+    box-shadow: none;
+    color: var(--ds-text, #172b4d);
+
+    [role='menuitem'] {
+      background-color: var(--ds-background-neutral-subtle, transparent);
+      color: currentcolor;
+
+      &:hover {
+        background-color: var(--ds-background-neutral-subtle-hovered, #f4f5f7);
+        color: currentcolor;
+      }
+
+      &:active {
+        background-color: var(--ds-background-neutral-subtle-pressed, #ebecf0);
+        color: var(--ds-text, #172b4d);
+      }
+    }
+  }
+
   color-scheme: dark;
   --ds-text: #b6c2cf;
   --ds-text-mediumEmphasis: #9fadbc; // Bitbucket

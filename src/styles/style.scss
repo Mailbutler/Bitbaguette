@@ -23,7 +23,7 @@ html {
     .media-file-card-view {
       max-width: 240px;
       max-height: 180px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--ds-border);
       border-radius: 4px;
 
       &,
