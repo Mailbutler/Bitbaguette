@@ -9,10 +9,7 @@
     "dev": "vite build --watch --mode development",
     "build": "rm -rf dist/* && vite build",
     "build:zip": "npm run build && zip -r extension.zip dist",
-    "bump": "npm run bump:minor",
-    "bump:patch": "npm version patch",
-    "bump:minor": "npm version minor",
-    "bump:major": "npm version major",
+    "bump": "npm version",
     "postbump": "./utils/sync-version.sh && git commit --amend --no-edit"
   },
   "devDependencies": {
