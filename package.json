@@ -2,7 +2,7 @@
   "name": "Bitbaguette",
   "description": "A browser extension extending Bitbucket's interface with useful features",
   "private": true,
-  "version": "1.26.5",
+  "version": "1.26.6",
   "type": "module",
   "license": "MIT",
   "scripts": {
