@@ -7,6 +7,7 @@ set -e
 # install some dependencies
 export HOMEBREW_NO_INSTALL_CLEANUP=TRUE
 brew install node@20
+export PATH="/usr/local/opt/node@20/bin:$PATH"
 
 # install JavaScript dependencies in project root
 cd ..
