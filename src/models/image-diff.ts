@@ -17,6 +17,10 @@ export interface ImageDiff {
   rawMisMatchPercentage?: number;
 }
 
+export function imageFileName(imageUrl: string): string {
+  return imageUrl.split('/').pop() || imageUrl;
+}
+
 export async function basicImageDiff(oldImageUrl: string, newImageUrl: string): Promise<ImageDiff> {
   const fileDataResponses = await Promise.all(
     [oldImageUrl, newImageUrl].map(async (url) => {

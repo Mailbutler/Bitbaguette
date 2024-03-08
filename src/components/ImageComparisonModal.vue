@@ -39,33 +39,25 @@
         </v-tabs>
 
         <v-window v-model="tab">
-          <v-window-item value="current" class="bg-grey-lighten-1 rounded">
-            <div class="d-flex">
-              <img :src="selectedImageDiff.oldDataUrl" :style="`max-width:${selectedImageDiff.width}px;`" />
-            </div>
+          <v-window-item value="current" eager class="bg-grey-lighten-1 rounded">
+            <img :src="selectedImageDiff.oldDataUrl" :style="`max-width:${selectedImageDiff.width}px;`" />
           </v-window-item>
 
-          <v-window-item value="proposed" class="bg-grey-lighten-1 rounded">
-            <div class="d-flex">
-              <img :src="selectedImageDiff.newDataUrl" :style="`max-width:${selectedImageDiff.width}px;`" />
-            </div>
+          <v-window-item value="proposed" eager class="bg-grey-lighten-1 rounded">
+            <img :src="selectedImageDiff.newDataUrl" :style="`max-width:${selectedImageDiff.width}px;`" />
           </v-window-item>
 
-          <v-window-item value="slider" class="bg-grey-lighten-1 rounded">
-            <div class="d-flex">
-              <ImgComparisonSlider :style="`max-width:${selectedImageDiff.width}px;`">
-                <!-- eslint-disable -->
-                <img slot="first" :src="selectedImageDiff.oldDataUrl" />
-                <img slot="second" :src="selectedImageDiff.newDataUrl" />
-                <!-- eslint-enable -->
-              </ImgComparisonSlider>
-            </div>
+          <v-window-item value="slider" eager class="bg-grey-lighten-1 rounded">
+            <ImgComparisonSlider :style="`max-width:${selectedImageDiff.width}px;`">
+              <!-- eslint-disable -->
+              <img slot="first" :src="selectedImageDiff.oldDataUrl" />
+              <img slot="second" :src="selectedImageDiff.newDataUrl" />
+              <!-- eslint-enable -->
+            </ImgComparisonSlider>
           </v-window-item>
 
-          <v-window-item value="diff" class="bg-grey-lighten-1 rounded">
-            <div class="d-flex">
-              <img :src="selectedImageDiff.diffDataUrl" :style="`max-width:${selectedImageDiff.width}px;`" />
-            </div>
+          <v-window-item value="diff" eager class="bg-grey-lighten-1 rounded">
+            <img :src="selectedImageDiff.diffDataUrl" :style="`max-width:${selectedImageDiff.width}px;`" />
           </v-window-item>
         </v-window>
       </div>
@@ -94,7 +86,6 @@ export default defineComponent({
   name: 'ImageComparisonModal',
   components: { VDialog, VCard, VRow, VCol, VBtn, VTabs, VTab, VBadge, VWindow, VWindowItem, ImgComparisonSlider },
   data: () => ({
-    selectedImageDiffIndex: 0,
     tab: 'slider',
     mdiArrowRight,
     mdiArrowLeft
@@ -109,26 +100,22 @@ export default defineComponent({
         this.mainStore.setShowDialog(show);
       }
     },
-    selectedImageDiff: {
-      get(): ImageDiff | undefined {
-        if (this.selectedImageDiffIndex === -1) return;
+    activeImageDiffIndex(): number {
+      return this.mainStore.activeImageDiffIndex;
+    },
+    selectedImageDiff(): ImageDiff | undefined {
+      if (this.activeImageDiffIndex === -1) return;
 
-        return this.mainStore.imageDiffs[this.selectedImageDiffIndex];
-      },
-      set(newImageDiff: ImageDiff) {
-        this.selectedImageDiffIndex = this.mainStore.imageDiffs.findIndex(
-          (imageDiff) => imageDiff.fileName === newImageDiff.fileName
-        );
-      }
+      return this.mainStore.imageDiffs[this.activeImageDiffIndex];
     },
     hasImages(): boolean {
       return this.mainStore.imageDiffs.length > 0;
     },
     atBeginning(): boolean {
-      return this.selectedImageDiffIndex <= 0;
+      return this.activeImageDiffIndex <= 0;
     },
     atEnd(): boolean {
-      return this.selectedImageDiffIndex >= this.mainStore.imageDiffs.length - 1;
+      return this.activeImageDiffIndex >= this.mainStore.imageDiffs.length - 1;
     }
   },
   watch: {
@@ -158,14 +145,14 @@ export default defineComponent({
       }
     },
     previous() {
-      if (this.selectedImageDiffIndex <= 0) return;
+      if (this.activeImageDiffIndex <= 0) return;
 
-      this.selectedImageDiffIndex--;
+      this.mainStore.setActiveImageDiffIndex(this.activeImageDiffIndex - 1);
     },
     next() {
-      if (this.selectedImageDiffIndex >= this.mainStore.imageDiffs.length - 1) return;
+      if (this.activeImageDiffIndex >= this.mainStore.imageDiffs.length - 1) return;
 
-      this.selectedImageDiffIndex++;
+      this.mainStore.setActiveImageDiffIndex(this.activeImageDiffIndex + 1);
     }
   }
 });
@@ -197,6 +184,10 @@ export default defineComponent({
   .v-tabs {
     flex-shrink: 0;
 
+    :deep(.v-slide-group__container) {
+      padding: 0 64px;
+    }
+
     .v-tab {
       :deep(.v-badge__badge) {
         bottom: unset !important;
@@ -208,6 +199,12 @@ export default defineComponent({
 
   .v-window {
     overflow: auto;
+
+    .v-window-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   img-comparison-slider {

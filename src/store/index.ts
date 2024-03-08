@@ -35,8 +35,9 @@ export const useMainStore = defineStore({
     setActiveImageDiffIndex(index: number) {
       this._activeImageDiffIndex = index;
     },
-    setActiveImageDiff(oldImageUrl: string) {
-      this._activeImageDiffIndex = this._imageDiffs.findIndex((imageDiff) => imageDiff.oldImageUrl == oldImageUrl);
+    setActiveImageDiffByFileName(fileName: string) {
+      this._activeImageDiffIndex = this._imageDiffs.findIndex((imageDiff) => imageDiff.fileName == fileName);
+      if (this._activeImageDiffIndex === -1) throw new Error(`Failed to find image diff for ${fileName}`);
     },
     async computeDiff(imageDiff: ImageDiff): Promise<void> {
       try {

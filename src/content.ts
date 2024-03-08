@@ -25,17 +25,17 @@ function inject() {
 // watch for changes in URL and comment count
 let lastUrl = location.href;
 let numComments = document.querySelectorAll("[id^='comment-']").length;
-let numImageDiffs = document.querySelectorAll(CSS_CLASSES.IMAGE_DIFF).length;
+let numDiffViews = document.querySelectorAll("[data-testid='file-content']").length;
 let numActivities = document.querySelectorAll('.activity-entry-items > div').length;
 new MutationObserver(() => {
   const url = location.href;
   const updatedNumComments = document.querySelectorAll("[id^='comment-']").length;
-  const updatedNumImageDiffs = document.querySelectorAll(CSS_CLASSES.IMAGE_DIFF).length;
+  const updatedNumDiffViews = document.querySelectorAll("[data-testid='file-content']").length;
   const updatedNumActivities = document.querySelectorAll('.activity-entry-items > div').length;
   if (
     url !== lastUrl ||
     updatedNumComments !== numComments ||
-    updatedNumImageDiffs !== numImageDiffs ||
+    updatedNumDiffViews !== numDiffViews ||
     updatedNumActivities !== numActivities
   ) {
     const newUrlHash = new URL(url).hash;
@@ -45,7 +45,7 @@ new MutationObserver(() => {
 
     lastUrl = url;
     numComments = updatedNumComments;
-    numImageDiffs = updatedNumImageDiffs;
+    numDiffViews = updatedNumDiffViews;
     numActivities = updatedNumActivities;
 
     inject();
