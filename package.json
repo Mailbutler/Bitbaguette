@@ -4,6 +4,7 @@
   "private": true,
   "version": "1.26.5",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "compile": "tsc --noEmit",
     "dev": "vite build --watch --mode development",
