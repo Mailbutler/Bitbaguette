@@ -5,6 +5,7 @@
 set -e
 
 # install some dependencies
+export HOMEBREW_NO_INSTALL_CLEANUP=TRUE
 brew install node
 
 # install JavaScript dependencies in project root
