@@ -261,6 +261,11 @@ html[data-color-mode='dark'][data-theme~='dark:dark'] {
     background-color: var(--ds-surface-raised);
   }
 
+  // content editor, e.g. for PR comments
+  #ak-editor-textarea {
+    color: var(--ds-text-mediumEmphasis);
+  }
+
   color-scheme: dark;
   --ds-text: #b6c2cf;
   --ds-text-mediumEmphasis: #9fadbc; // Bitbucket
