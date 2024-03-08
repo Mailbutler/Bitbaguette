@@ -55,18 +55,18 @@ html[data-color-mode='dark'][data-theme~='dark:dark'] {
   }
 
   .css-1rribvk,
-  .css-889cso {
+  .css-889cso,
+  .ak-navigation-resize-button {
     // left sidebar toggle button
     background-color: var(--ds-surface-overlay, #ffffff);
     color: var(--ds-text-subtle, #6b778c);
     box-shadow: 0 0 0 1.2px var(--ds-background-accent-gray-subtler, #dfe1e6);
-  }
 
-  .css-889cso:hover {
-    // left sidebar toggle button (hovered)
-    background-color: var(--ds-background-selected-bold, #4c9aff);
-    color: var(--ds-text-inverse, #ffffff);
-    opacity: 1;
+    &:hover {
+      background-color: var(--ds-background-selected-bold, #4c9aff);
+      color: var(--ds-text-inverse, #ffffff);
+      opacity: 1;
+    }
   }
 
   // icon + text within menu items
@@ -211,7 +211,8 @@ html[data-color-mode='dark'][data-theme~='dark:dark'] {
     background-color: var(--ds-surface, #fff);
   }
 
-  .css-1msqval {
+  .css-1msqval,
+  .css-i3dwes {
     // pipeline steps
     & > a > div,
     & div {
@@ -232,7 +233,8 @@ html[data-color-mode='dark'][data-theme~='dark:dark'] {
     }
   }
 
-  .css-z17u4a {
+  .css-z17u4a,
+  .css-1ah7w7c {
     // selected pipeline step
     & > a > div,
     & div {
@@ -252,6 +254,11 @@ html[data-color-mode='dark'][data-theme~='dark:dark'] {
   .css-1xsbebt {
     // background of icon in reports dialog
     background: unset;
+  }
+
+  // dialogs
+  section[role='dialog'] {
+    background-color: var(--ds-surface-raised);
   }
 
   color-scheme: dark;
