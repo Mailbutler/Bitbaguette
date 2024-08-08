@@ -51,6 +51,16 @@ export async function addImageComparisonButtons() {
       buttonElement.classList.add('baguette-image-comparison-button', CSS_CLASSES.BUTTON);
       buttonElement.innerText = 'Compare';
       buttonElement.addEventListener('click', () => {
+        const currentWrapperElement = buttonElement.closest("[data-testid^='file-content']");
+        if (!currentWrapperElement) throw new Error('Button wrapper not found!');
+
+        const currentDiffElementPair = currentWrapperElement.querySelectorAll('div[data-testid="image-diff"] img');
+        if (currentDiffElementPair.length !== 2) throw new Error('Image diff is not a pair!');
+
+        const oldImageUrl = currentDiffElementPair[0].getAttribute('src');
+        const newImageUrl = currentDiffElementPair[1].getAttribute('src');
+        if (!(oldImageUrl && newImageUrl)) throw new Error('Failed to extract image URLs!');
+
         const fileName = imageFileName(oldImageUrl);
         mainStore.setActiveImageDiffByFileName(fileName);
         mainStore.setShowDialog(true);

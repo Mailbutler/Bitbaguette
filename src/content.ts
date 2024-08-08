@@ -25,12 +25,12 @@ function inject() {
 // watch for changes in URL and comment count
 let lastUrl = location.href;
 let numComments = document.querySelectorAll("[id^='comment-']").length;
-let numDiffViews = document.querySelectorAll("[data-testid='file-content']").length;
+let numDiffViews = document.querySelectorAll("[data-testid^='file-content']").length;
 let numActivities = document.querySelectorAll('.activity-entry-items > div').length;
 new MutationObserver(() => {
   const url = location.href;
   const updatedNumComments = document.querySelectorAll("[id^='comment-']").length;
-  const updatedNumDiffViews = document.querySelectorAll("[data-testid='file-content']").length;
+  const updatedNumDiffViews = document.querySelectorAll("[data-testid^='file-content']").length;
   const updatedNumActivities = document.querySelectorAll('.activity-entry-items > div').length;
   if (
     url !== lastUrl ||

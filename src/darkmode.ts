@@ -58,23 +58,25 @@ colorSchemeMediaQueryList.addEventListener('change', async (event: MediaQueryLis
 
 export function addThemeSelector(accountDropdownElement: Element) {
   if (accountDropdownElement.querySelector('.baguette-dropdown-section')) return; // already added
-  const allGroupsElement = accountDropdownElement.querySelector('.css-zlqmva');
+
+  const allGroupsElement = accountDropdownElement.querySelector('.css-4mjcmd');
   if (!allGroupsElement) throw new Error('Groups element not found!');
-  const lastGroupElement = Array.from(allGroupsElement.querySelectorAll('.css-nqsyso')).at(-1);
+
+  const lastGroupElement = Array.from(allGroupsElement.querySelectorAll('.css-4mjcmd')).at(-1);
   if (!lastGroupElement) throw new Error('Last group element not found!');
 
   const groupWrapperElement = document.createElement('div');
-  groupWrapperElement.classList.add('css-nqsyso', 'baguette-dropdown-section');
+  groupWrapperElement.classList.add('css-4mjcmd', 'baguette-dropdown-section');
 
   const groupElement = document.createElement('div');
   groupElement.setAttribute('role', 'group');
   groupElement.setAttribute('data-section', 'true');
   groupElement.setAttribute('aria-label', 'Theme');
-  groupElement.classList.add('css-usnzv1');
+  groupElement.classList.add('css-bc3sqp');
   groupWrapperElement.appendChild(groupElement);
 
   const groupTitleElement = document.createElement('div');
-  groupTitleElement.classList.add('css-10qbuca');
+  groupTitleElement.classList.add('css-7857jj');
   groupTitleElement.setAttribute('data-ds--menu--heading-item', 'true');
   groupTitleElement.innerText = 'Theme';
   groupElement.appendChild(groupTitleElement);

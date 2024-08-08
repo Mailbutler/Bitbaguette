@@ -196,23 +196,23 @@ button.css-oecbtb {
 }
 
 // image diff
-div[data-testid='file-content'] {
+div[data-testid^='file-content'] {
   position: relative;
 
   .baguette-image-comparison-button {
+    background-color: var(--ds-background-neutral, rgba(9, 30, 66, 0.04));
+
     &-wrapper {
       position: absolute !important;
       left: 50%;
       top: calc(50% - 16px);
       transform: translateX(-50%);
       background-color: var(--ds-surface, #fff);
-      border-radius: 4px;
+      border-radius: var(--ds-border-radius, 3px);
       box-shadow:
         0 3px 6px rgba(0, 0, 0, 0.16),
         0 3px 6px rgba(0, 0, 0, 0.23);
     }
-
-    background-color: var(--ds-background-neutral, rgba(9, 30, 66, 0.04));
 
     &:hover,
     &:active,
