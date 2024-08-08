@@ -29,3 +29,6 @@ xcuserdata
 # Config files
 .webextrc
 .webextrc.*
+
+# we use npm as package manager
+yarn.lock
